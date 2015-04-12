@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="us_dbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.6" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="appointments">
+          <Key>
+            <PropertyRef Name="idappointment" />
+          </Key>
+          <Property Name="idappointment" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="start_time" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="end_time" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="last_name" Type="varchar" MaxLength="45" Nullable="false" />
+          <Property Name="comments" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityContainer Name="us_dbModelStoreContainer">
+          <EntitySet Name="appointments" EntityType="Self.appointments" Schema="us_db" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="us_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="us_dbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="appointments" EntityType="us_dbModel.appointment" />
+        </EntityContainer>
+        <EntityType Name="appointment">
+          <Key>
+            <PropertyRef Name="idappointment" />
+          </Key>
+          <Property Name="idappointment" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="start_time" Type="DateTime" Nullable="false" />
+          <Property Name="end_time" Type="DateTime" Nullable="false" />
+          <Property Name="first_name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="last_name" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="us_dbModelStoreContainer" CdmEntityContainer="us_dbEntities">
+          <EntitySetMapping Name="appointments">
+            <EntityTypeMapping TypeName="us_dbModel.appointment">
+              <MappingFragment StoreEntitySet="appointments">
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="end_time" ColumnName="end_time" />
+                <ScalarProperty Name="start_time" ColumnName="start_time" />
+                <ScalarProperty Name="idappointment" ColumnName="idappointment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
